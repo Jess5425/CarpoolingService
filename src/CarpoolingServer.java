@@ -1,14 +1,30 @@
 import java.util.*;
 
+/**
+ * Clase que representa un servidor de carpools con funcionalidades como cálculo de rutas, registro de empleados y conductores, y estadísticas de conductores.
+ */
 public class CarpoolingServer {
+    /**
+     * Grafo que representa las conexiones y tiempos de viaje entre destinos.
+     */
     private Map<String, Map<String, Integer>> graph; // Grafo que representa las conexiones y tiempos de viaje entre destinos
+
+    /**
+     * Ubicación de la empresa en el grafo.
+     */
     private String companyLocation;
 
+    /**
+     * Constructor que inicializa el servidor de carpooling y crea el grafo con destinos y tiempos de viaje aleatorios.
+     */
     public CarpoolingServer() {
         this.graph = new HashMap<>();
         initializeMap();
     }
 
+    /**
+     * Inicializa el grafo con destinos y tiempos de viaje aleatorios.
+     */
     private void initializeMap() {
         // Generación de destinos y vías de comunicación aleatorios (simplificado)
         Random random = new Random();
@@ -33,14 +49,34 @@ public class CarpoolingServer {
         companyLocation = allLocations.get(random.nextInt(allLocations.size()));
     }
 
+    /**
+     * Obtiene la lista de destinos disponibles en el grafo.
+     *
+     * @return Lista de destinos.
+     */
     public List<String> getDestinations() {
         return new ArrayList<>(graph.keySet());
     }
 
+    /**
+     * Obtiene el tiempo de viaje entre dos destinos en el grafo.
+     *
+     * @param source      Origen del viaje.
+     * @param destination Destino del viaje.
+     * @return Tiempo de viaje entre los destinos.
+     */
     public int getTravelTime(String source, String destination) {
         return graph.get(source).get(destination);
     }
 
+    /**
+     * Calcula la ruta más corta entre dos destinos utilizando el algoritmo de Dijkstra.
+     *
+     * @param source      Origen de la ruta.
+     * @param destination Destino de la ruta.
+     * @param forDriver   Indica si se calcula la ruta para un conductor.
+     * @return Lista de destinos que forman la ruta más corta.
+     */
     public List<String> calculateShortestRoute(String source, String destination, boolean forDriver) {
         // Implementa el algoritmo de Dijkstra para calcular la ruta más corta
         Map<String, Integer> distances = new HashMap<>();
@@ -81,6 +117,13 @@ public class CarpoolingServer {
         return shortestRoute;
     }
 
+    /**
+     * Calcula la ruta más corta para un pasajero que tiene múltiples destinos.
+     *
+     * @param source       Origen de la ruta.
+     * @param destinations Lista de destinos del pasajero.
+     * @return Lista de destinos que forman la ruta más corta para el pasajero.
+     */
     public List<String> calculateShortestRouteForPassenger(String source, List<String> destinations) {
         // Implementa el algoritmo de Dijkstra para calcular la ruta más corta para un pasajero
         Map<String, Integer> distances = new HashMap<>();
@@ -125,18 +168,40 @@ public class CarpoolingServer {
         return shortestRoute;
     }
 
+    /**
+     * Obtiene la ubicación de la empresa en el grafo.
+     *
+     * @return Ubicación de la empresa.
+     */
     public String getCompanyLocation() {
         return companyLocation;
     }
-    //Ignacio
+    
+    /**
+     * Registra a un empleado en el sistema.
+     *
+     * @param employeeId Identificación del empleado.
+     * @param residence  Ubicación de residencia del empleado.
+     */    
     public void registerEmployee(String employeeId, String residence) {
-        // Implementar el registro de empleados
+        
     }
-    //Ignacio
+
+    /**
+     * Registra a un conductor en el sistema.
+     *
+     * @param driverId  Identificación del conductor.
+     * @param residence Ubicación de residencia del conductor.
+     */    
     public void registerDriver(String driverId, String residence) {
-        // Implementar el registro de conductores
+        
     }
-    //Ignacio
+    
+    /**
+     * Obtiene los 5 conductores con más viajes realizados.
+     *
+     * @return Lista de los 5 conductores con más viajes.
+     */    
     public List<String> getTop5Drivers() {
         // Obtenie un mapa con el número de viajes realizados por cada conductor
         Map<String, Integer> driverTripsCount = new HashMap<>();
@@ -183,7 +248,10 @@ public class CarpoolingServer {
 
         return top5Drivers;
     }
-    //Imprime el mapa(grafo)
+
+    /**
+     * Imprime el grafo (mapa) mostrando las conexiones y tiempos de viaje entre destinos.
+     */    
     public void printGraph() {
         for (String source : graph.keySet()) {
             System.out.print(source + ": ");
@@ -194,7 +262,12 @@ public class CarpoolingServer {
             System.out.println();
         }
     }
-    //Main para probar métodos
+
+    /**
+     * Método principal utilizado para probar los métodos de la clase.
+     *
+     * @param args Argumentos de línea de comandos (no utilizado en este contexto).
+     */
     public static void main(String[] args) {
         // Código de prueba
         CarpoolingServer carpoolingServer = new CarpoolingServer();
