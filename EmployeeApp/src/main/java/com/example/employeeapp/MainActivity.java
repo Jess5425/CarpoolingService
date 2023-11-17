@@ -6,11 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+/**
+ * Clase que representa la actividad principal de la aplicación.
+ * Permite al usuario iniciar sesión o registrarse mediante botones.
+ */
 
 public class MainActivity extends AppCompatActivity {
     private Button iniciaSesion;
     private Button registrarse;
 
+    /**
+     * Método llamado cuando se crea la actividad. Inicializa la interfaz de usuario
+     * y configura los botones para redirigir al usuario a las actividades correspondientes.
+     *
+     * @param savedInstanceState El estado de la instancia guardado.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+//Configuracion para el boton que registra
         registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,7 +5,18 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * Clase para enviar datos de usuario y contraseña a un servidor en segundo plano.
+ */
+
 public class SendDataTask extends AsyncTask<String, Void, Void> {
+
+    /**
+     * Método que se ejecuta en segundo plano para enviar datos al servidor.
+     *
+     * @param params Un arreglo de strings que contiene el usuario en params[0] y la contraseña en params[1].
+     * @return Nulo, porque no se espera un resultado específico.
+     */
 
     @Override
     protected Void doInBackground(String... params) {
@@ -13,10 +24,10 @@ public class SendDataTask extends AsyncTask<String, Void, Void> {
         String contrasena = params[1];
 
         try {
-            // Reemplaza "tu_servidor" y "tu_puerto" con la dirección y puerto del servidor
+
             Socket socket = new Socket("Server", 9999);
 
-            // Obtén el OutputStream del socket
+            // OutputStream del socket
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
             // Envía el usuario y la contraseña al servidor
