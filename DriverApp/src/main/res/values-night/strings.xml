@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="MainTitle">Carpooling Service</string>
+    <string name="inicioSesion">Iniciar Sesión</string>
+    <string name="registro">Registrarse</string>
+    <string name="Nombre">Nombre</string>
+    <string name="carnet">Número de carnet</string>
+    <string name="amigos">Amigos</string>
+    <string name="rateText">¿Cómo estuvo su último viaje?</string>
+    <string name="amigosText">Lista de amigos :)</string>
+    <string name="smile">:D</string>
+    <string name="tipoviaje">Tipo de viaje</string>
+    <string name="sindesvios">Sin desvíos</string>
+    <string name="amiguis">De amiguis :3</string>
+    <string name="eta">ETA:</string>
+</resources>
