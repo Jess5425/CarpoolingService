@@ -17,11 +17,14 @@ class Conductor {
     String contrasena;
     String ubicacion;
 
-    public Conductor(String usuario, String contrasena, String ubicacion){
+    int viajes;
+
+    public Conductor(String usuario, String contrasena, String ubicacion, int viajes){
 
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.ubicacion = ubicacion;
+        this.viajes = viajes;
     }
 
     public String getUsuario() {
@@ -36,18 +39,9 @@ class Conductor {
         return ubicacion;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public int getViajes() {
+        return viajes;
     }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
 }
 
 class Pasajero{
@@ -121,6 +115,11 @@ public class Registro {
         Text textContrasena = doc.createTextNode(conductor.getContrasena());
         contrasena.appendChild(textContrasena);
         conductores.appendChild(contrasena);
+
+        Element viajes = doc.createElement("Viajes");
+        Text textViajes = doc.createTextNode(String.valueOf(conductor.getViajes()));
+        viajes.appendChild(textViajes);
+        conductores.appendChild(viajes);
 
         Element ubicacion = doc.createElement("Ubicacion");
         Text textUbicacion = doc.createTextNode(conductor.getUbicacion());
@@ -345,6 +344,6 @@ public class Registro {
     public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException, SAXException {
         Registro registro = new Registro();
         Pasajero pasajero1 = new Pasajero("Josue", "147", "Fundacion");
-        registro.registrarPasajero(pasajero1);
+        registro.eliminarPasajero("Josue");
     }
 }
